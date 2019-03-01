@@ -3,12 +3,20 @@ function askTask()
 {
     let taskName=document.getElementById("inputTask").value;
     let taskItem=document.createElement("LI");
-    let listNode=document.createTextNode(taskName);
-    taskItem.appendChild(listNode);
-    let list=document.getElementById("taskList");
+    taskItem.innerText=taskName
+    let list=document.getElementById("taskList");    
+    let btn=document.createElement("button");
+    btn.innerText="Delete";
+    btn.onclick=deleteli;
+    taskItem.appendChild(btn);
     list.insertBefore(taskItem,list.childNodes[0]);
     let nombre=document.getElementById("taskList").childElementCount;
-    console.log(nombre)
     document.getElementById('nbreTask').innerText=nombre; 
     document.getElementById('inputTask').value="";
+}
+function deleteli()
+{
+    let list=document.getElementById("taskList"); 
+    list.removeChild(this.parentNode);
+    nbreTask.textContent=document.getElementById("taskList").childElementCount;
 }
